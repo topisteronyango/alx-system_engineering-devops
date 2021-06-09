@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir /tmp/holberton
+mkdir /tmp/holberton  
 
 
 
