@@ -4,7 +4,7 @@
 apt-get update
 apt-get install nginx -y
 
-echo "Holberton School" > /var/www/html/index.html
+echo "Hello World" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 printf %s "server {
     listen 80;
@@ -18,3 +18,4 @@ printf %s "server {
 }" > /etc/nginx/sites-available/default
 
 service nginx restart
+
