@@ -10,7 +10,7 @@ exec {'install':
 }
 
 exec {'Holberton':
-  command  => 'echo "Hellow World" | sudo tee /var/www/html/index.html',
+  command  => 'echo "Hellow World!" | sudo tee /var/www/html/index.html',
   provider => shell,
 }
 
