@@ -1,10 +1,6 @@
-# install 'puppet-lint'
+# Installing puppet-lint as shown below
 
-package { 'puppet-lint':
+package {'puppet-lint':
   ensure   => 'installed',
   provider => 'gem',
 }
-
-
-
-
