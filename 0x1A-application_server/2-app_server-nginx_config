@@ -70,7 +70,7 @@ http {
 
 	include /etc/nginx/conf.d/*.conf;
 	include /etc/nginx/sites-available/*;
-	add_header X-Served-By "931-web-01";
+	add_header X-Served-By "364-web-01";
 
 }
 
