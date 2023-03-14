@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "684669440532",
+    "project_id": "women-handbook",
+    "storage_bucket": "women-handbook.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684669440532:android:b953f5e1af0f92ab0bcd01",
+        "android_client_info": {
+          "package_name": "com.example.handbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "684669440532-savmqapbr0lk5q0g09e59qdrdioal41a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCegs1_x5X5F2IVusv9tYk3TmdWRu8m4fg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "684669440532-savmqapbr0lk5q0g09e59qdrdioal41a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
