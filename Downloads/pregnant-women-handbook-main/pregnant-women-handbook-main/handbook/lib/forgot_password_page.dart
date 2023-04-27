@@ -6,7 +6,8 @@ import 'package:handbook/themes/themes_helper.dart';
 
 import 'forgot_password_verification_page.dart';
 import 'login.dart';
-import 'headers/header_widget.dart';
+import 'package:email_validator/email_validator.dart';
+
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
@@ -26,10 +27,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                height: _headerHeight,
-                child: HeaderWidget(_headerHeight, true, Icons.password_rounded),
-              ),
               SafeArea(
                 child: Container(
                   margin: EdgeInsets.fromLTRB(25, 10, 25, 10),
@@ -78,7 +75,23 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           children: <Widget>[
                             Container(
                               child: TextFormField(
-                                decoration: ThemeHelper().textInputDecoration("Email", "Enter your email"),
+
+                                decoration:  InputDecoration(
+                                  //border: OutlineInputBorder(),
+                                  filled: true,
+                                  labelText: 'Email',
+                                  hintText: 'Enter Your Email Address',
+                                  contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                  border:OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(color: Colors.black),
+
+
+                                  ),
+                                  //textInputDecoration('Email', 'Enter your email'),
+
+                                ),
+                                // decoration: ThemeHelper().textInputDecoration("Email", "Enter your email"),
                                 validator: (val){
                                   if(val!.isEmpty){
                                     return "Email can't be empty";
@@ -89,13 +102,21 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                   return null;
                                 },
                               ),
-                              decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                              //decoration: ThemeHelper().inputBoxDecorationShaddow(),
                             ),
                             SizedBox(height: 40.0),
                             Container(
-                              decoration: ThemeHelper().buttonBoxDecoration(context),
+                              // decoration: ThemeHelper().buttonBoxDecoration(context),
                               child: ElevatedButton(
-                                style: ThemeHelper().buttonStyle(),
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurple),
+                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(30.0),
+                                        )
+                                    )
+                                ),
+                                // style: ThemeHelper().buttonStyle(),
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(
                                       40, 10, 40, 10),

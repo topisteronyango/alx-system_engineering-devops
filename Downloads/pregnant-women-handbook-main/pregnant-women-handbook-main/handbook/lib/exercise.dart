@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'navBar.dart';
+import 'morningExercise.dart';
 
 class ExercisePage extends StatelessWidget {
   @override
@@ -10,14 +11,14 @@ class ExercisePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(height: 20,),
+          SizedBox(height: 35,),
 
 
           OutlinedButton(
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NavBar()),
+                MaterialPageRoute(builder: (context) => MorningExercise()),
               );
             },
             child: Text(
@@ -37,7 +38,7 @@ class ExercisePage extends StatelessWidget {
 
           ),
 
-          SizedBox(height: 20,),
+          SizedBox(height: 35,),
 
 
 
@@ -65,7 +66,7 @@ class ExercisePage extends StatelessWidget {
             ),
 
           ),
-          SizedBox(height: 20,),
+          SizedBox(height: 35,),
 
           OutlinedButton(
             onPressed: (){
@@ -91,37 +92,12 @@ class ExercisePage extends StatelessWidget {
 
           ),
 
-          SizedBox(height: 18,),
-
-
-          OutlinedButton(
-            onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => NavBar()),
-              );
-            },
-            child: Text(
-              'MORE GUIDELINES',
-              style: TextStyle(fontSize: 16.0, color: Colors.white),
-
-            ),
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.pinkAccent),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.red),
-                    )
-                )
-            ),
-
-          ),
 
 
 
 
-          SizedBox(height: 100,),
+
+          SizedBox(height: 158,),
 
           Container(
             color: Colors.deepPurple,

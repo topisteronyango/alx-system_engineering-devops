@@ -7,9 +7,10 @@ import 'package:handbook/themes/themes_helper.dart';
 import 'package:handbook/homePage.dart';
 
 import 'forgot_password_page.dart';
-import 'profile_page.dart';
 import 'registration_page.dart';
-import 'headers/header_widget.dart';
+import 'package:email_validator/email_validator.dart';
+
+
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -44,6 +45,11 @@ class _LoginPageState extends State<LoginPage>{
       });
     }
   }
+  String _errorMessage = '';
+
+
+  //final ButtonStyle style =
+      //ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20, backgroundColor: Colors.deepPurple));
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +59,7 @@ class _LoginPageState extends State<LoginPage>{
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: _headerHeight,
-              child: HeaderWidget(_headerHeight, true, Icons.login), //let's create a common header widget
-
-            ),
+            SizedBox(height: 60,),
             SafeArea(
               child: Container(
                   padding: EdgeInsets.fromLTRB(30, 5, 20, 10),
@@ -69,66 +71,203 @@ class _LoginPageState extends State<LoginPage>{
                         style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        'Sign in into your account',
-                        style: TextStyle(color: Colors.grey),
+                        'Login into your account',
+                        style: TextStyle(color: Colors.black),
                       ),
                       SizedBox(height: 30.0),
                       Form(
                           key: _formKey,
                           child: Column(
                             children: [
+
+
+
+                              //Real code below
                               Container(
-                                child: TextField(
-                                  controller: _emailController,
-                                  decoration: ThemeHelper().textInputDecoration('Email', 'Enter your username'),
+                                child: TextFormField(
+                          // decoration: textInputDecoration('Email', 'Enter your email'),
+
+                                  decoration:  InputDecoration(
+                                    //border: OutlineInputBorder(),
+                                    filled: true,
+                                    labelText: 'Email',
+                                    hintText: 'Enter Your Email Address',
+                                    contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                    border:OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: BorderSide(color: Colors.black),
+
+
+                                         ),
+                                      //textInputDecoration('Email', 'Enter your email'),
+
+                                  ),
+                                  // controller: _emailController,
+                                  // onSubmitted: (String value) {
+                                  //   debugPrint(value);
+                                  //
+                                  // },
+
+                                  // autofocus: true,
+                                  // controller: _emailController,
+                                  // decoration: InputDecoration(
+                                  //   border:OutlineInputBorder(
+                                  //     borderRadius: BorderRadius.circular(50),
+                                  //     borderSide: BorderSide(color: Colors.grey)
+                                  //   ),
+                                  //   prefixIcon: Icon(Icons.email),
+                                  //   suffixIcon: Icon(Icons.visibility_off),
+                                  //   hintText: "Enter Your Email",
+                                  //   filled: true,
+                                  //
+                                  //
+                                  //   //The other code
+                                  // ),
+                                  // decoration: ThemeHelper().textInputDecoration('Email', 'Enter your email'),
+
+                                  // keyboardType: TextInputType.emailAddress,
+                                  // validator: (val) {
+                                  //   if(!(val!.isEmpty) && !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(val)){
+                                  //     return "Enter a valid email address";
+                                  //   }
+                                  //   return null;
+                                  // },
+
+                                  onChanged: (val){
+                                    validateEmail(val);
+                                  },
+
                                 ),
-                                decoration: ThemeHelper().inputBoxDecorationShaddow(),
+
+                                // decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(_errorMessage, style: TextStyle(color: Colors.red),),
                               ),
                               SizedBox(height: 30.0),
+                              // Container(
+                              //   child: TextFormField(
+                              //     controller: _passwordController,
+                              //     obscureText: true,
+                              //     decoration:  InputDecoration(
+                              //       //border: OutlineInputBorder(),
+                              //       labelText: 'Password*',
+                              //       hintText: 'Enter Your Password',
+                              //       contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                              //       border:OutlineInputBorder(
+                              //         borderRadius: BorderRadius.circular(30),
+                              //         borderSide: BorderSide(color: Colors.deepPurple),
+                              //
+                              //
+                              //       ),
+                              //       //textInputDecoration('Email', 'Enter your email'),
+                              //
+                              //     ),
+                              //
+                              //     validator: (val) {
+                              //       if (val!.isEmpty) {
+                              //         return "This field is required";
+                              //       }
+                              //       return null;
+                              //     },
+                              //
+                              //     // decoration: ThemeHelper().textInputDecoration('Password', 'Enter your password'),
+                              //   ),
+                              //   // decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                              // ),
                               Container(
-                                child: TextField(
+                                child: TextFormField(
                                   controller: _passwordController,
                                   obscureText: true,
-                                  decoration: ThemeHelper().textInputDecoration('Password', 'Enter your password'),
+                                  decoration:  InputDecoration(
+                                    //border: OutlineInputBorder(),
+                                    labelText: 'Password*',
+                                    hintText: 'Enter Your Password',
+                                    contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                    border:OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: BorderSide(color: Colors.deepPurple),
+
+
+                                    ),),
+
+                                  // decoration: ThemeHelper().textInputDecoration(
+                                  //     "Password*", "Enter your password"),
+                                  validator: (val) {
+                                    if (val!.isEmpty) {
+                                      return "This field is required";
+                                    }
+                                    return null;
+                                  },
                                 ),
-                                decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                                // decoration: ThemeHelper().inputBoxDecorationShaddow(),
                               ),
+
                               SizedBox(height: 15.0),
                               Container(
                                 margin: EdgeInsets.fromLTRB(10,0,10,20),
                                 alignment: Alignment.topRight,
                                 child: GestureDetector(
                                   onTap: () {
-                                    Navigator.push( context, MaterialPageRoute( builder: (context) => ForgotPasswordPage()), );
+                                    // Navigator.push( context, MaterialPageRoute( builder: (context) => ForgotPasswordPage()), );
                                   },
-                                  child: Text( "Forgot password?", style: TextStyle( color: Colors.grey, ),
+                                  child: Text( "Forgot password?", style: TextStyle( color: Colors.black, ),
                                   ),
                                 ),
                               ),
                               Container(
-                                decoration: ThemeHelper().buttonBoxDecoration(context),
+                                // decoration: ThemeHelper().buttonBoxDecoration(context),
+
+
                                 child: ElevatedButton(
-                                  style: ThemeHelper().buttonStyle(),
+                                  // style: const ButtonStyle(
+                                  //   backgroundColor: MaterialStatePropertyAll<Color>(Colors.deepPurple),
+                                  //   shape: ,
+                                  //
+                                  //
+                                  // ),
+
+                                  // style: ElevatedButton.styleFrom(
+                                  //     shape: RoundedRectangleBorder(
+                                  //       borderRadius: BorderRadius.circular(50),
+                                  //
+                                  //       side: BorderSide(color: Colors.red)
+                                  //     )
+                                  //
+                                  // ),
+                                  style: ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurple),
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(30.0),
+                                          )
+                                      )
+                                  ),
                                   child: Padding(
                                     padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
-                                    child: Text('Sign In'.toUpperCase(), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),),
+                                    child: Text('Login'.toUpperCase(), style: TextStyle(fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                        ),
+                                    ),
+
                                   ),
                                   onPressed: (){
-                                    //After successful login we will redirect to profile page. Let's create profile page now
-                                    //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                                    //After successful login we will redirect to home page. Let's create profile page now
                                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyApp()));
                                   },
                                 ),
                               ),
+                              SizedBox(height: 20,),
                               Container(
                                 margin: EdgeInsets.fromLTRB(10,20,10,20),
-                                //child: Text('Don\'t have an account? Create'),
                                 child: Text.rich(
                                     TextSpan(
                                         children: [
                                           TextSpan(text: "Don\'t have an account? "),
                                           TextSpan(
-                                            text: 'Create',
+                                            text: 'Create account',
                                             recognizer: TapGestureRecognizer()
                                               ..onTap = () async{
                                               _signIn();
@@ -153,4 +292,22 @@ class _LoginPageState extends State<LoginPage>{
     );
 
   }
+
+  void validateEmail(String val) {
+    if(val.isEmpty){
+      setState(() {
+        _errorMessage = "Email can not be empty";
+      });
+    }else if(!EmailValidator.validate(val, true)){
+      setState(() {
+        _errorMessage = "Invalid Email Address";
+      });
+    }else{
+      setState(() {
+
+        _errorMessage = "";
+      });
+    }
+  }
+
 }

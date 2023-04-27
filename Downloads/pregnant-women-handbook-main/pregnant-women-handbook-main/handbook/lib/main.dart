@@ -38,14 +38,12 @@ class WelcomeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Login UI',
+      title: 'Pregnant Women Handbook',
+
       theme: ThemeData(
-        primaryColor: _primaryColor,
-        accentColor: _accentColor,
-        scaffoldBackgroundColor: Colors.grey.shade100,
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.deepPurple,
       ),
-      home: SplashScreen(title: 'Flutter Login UI'),
+      home: SplashScreen(title: 'Pregnant Women Handbook'),
     );
   }
 }

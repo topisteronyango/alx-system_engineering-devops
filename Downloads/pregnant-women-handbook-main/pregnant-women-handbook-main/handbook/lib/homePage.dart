@@ -7,6 +7,7 @@ import 'educate.dart';
 import 'symptom.dart';
 import 'diet.dart';
 import 'exercise.dart';
+import 'aboutus.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Pregnant Women Handbook',
 
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
@@ -91,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => NavBar()),
+                        MaterialPageRoute(builder: (context) => AboutUsPage()),
                       );
                     },
                     child: Text(

@@ -49,6 +49,12 @@ dependencies:
   cloud_firestore: ^4.4.4
   firebase_core: ^2.7.1
   firebase_auth: ^4.2.2
+  email_validator: ^2.1.17
+  url_launcher: ^6.1.10
+  syncfusion_flutter_calendar: ^21.1.41
+
+
+
 
 
 dev_dependencies:

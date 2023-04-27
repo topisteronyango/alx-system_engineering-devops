@@ -1,11 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:handbook/login.dart';
 import 'package:handbook/themes/themes_helper.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:email_validator/email_validator.dart';
 
-import 'profile_page.dart';
-import 'headers/header_widget.dart';
 
 class ForgotPasswordVerificationPage extends StatefulWidget {
   const ForgotPasswordVerificationPage({Key? key}) : super(key: key);
@@ -27,11 +28,6 @@ class _ForgotPasswordVerificationPageState extends State<ForgotPasswordVerificat
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                height: _headerHeight,
-                child: HeaderWidget(
-                    _headerHeight, true, Icons.privacy_tip_outlined),
-              ),
               SafeArea(
                 child: Container(
                   margin: EdgeInsets.fromLTRB(25, 10, 25, 10),
@@ -121,7 +117,15 @@ class _ForgotPasswordVerificationPageState extends State<ForgotPasswordVerificat
                             Container(
                               decoration: _pinSuccess ? ThemeHelper().buttonBoxDecoration(context):ThemeHelper().buttonBoxDecoration(context, "#AAAAAA","#757575"),
                               child: ElevatedButton(
-                                style: ThemeHelper().buttonStyle(),
+                                // style: ThemeHelper().buttonStyle(),
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurple),
+                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(30.0),
+                                        )
+                                    )
+                                ),
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(
                                       40, 10, 40, 10),
@@ -137,7 +141,7 @@ class _ForgotPasswordVerificationPageState extends State<ForgotPasswordVerificat
                                 onPressed: _pinSuccess ? () {
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
-                                          builder: (context) => ProfilePage()
+                                          builder: (context) => LoginPage()
                                       ),
                                           (Route<dynamic> route) => false
                                   );
@@ -154,6 +158,55 @@ class _ForgotPasswordVerificationPageState extends State<ForgotPasswordVerificat
             ],
           ),
         )
+    );
+  }
+}
+
+class ThemeHelper {
+  AlertDialog alartDialog(String title, String content, BuildContext context) {
+    return AlertDialog(
+      title: Text(title),
+      content: Text(content),
+      actions: [
+        TextButton(
+          child: Text(
+            "OK",
+            style: TextStyle(color: Colors.white),
+          ),
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.black38)),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+  }
+  BoxDecoration buttonBoxDecoration(BuildContext context, [String color1 = "", String color2 = ""]) {
+    Color c1 = Theme.of(context).primaryColor;
+    Color c2 = Theme.of(context).accentColor;
+    if (color1.isEmpty == false) {
+      c1 = HexColor(color1);
+    }
+    if (color2.isEmpty == false) {
+      c2 = HexColor(color2);
+    }
+
+    return BoxDecoration(
+      boxShadow: [
+        BoxShadow(color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
+      ],
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        stops: [0.0, 1.0],
+        colors: [
+          c1,
+          c2,
+        ],
+      ),
+      color: Colors.deepPurple.shade300,
+      borderRadius: BorderRadius.circular(30),
     );
   }
 }

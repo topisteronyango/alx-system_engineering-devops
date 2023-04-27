@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementById() method</title>
+</head>
+<body>
+    <p id="Para1">This is paragraph one</p>
+    <p id="Para2">This is paragraph two</p>
+
+    <h1>Popular presidents in Africa</h1>
+    <ul class="prelist">
+        <li>Museveni</li>
+        <li>Kagame</li>
+        <li>Ruto</li>
+    </ul>
+    <script type="text/javascript">
+        const paragraph1 = document.getElementById("Para1");
+            console.log(paragraph1.textContent);
+
+        let paragraph2 = document.getElementById("Para2");
+        console.log(paragraph2.textContent);
+
+        const list = document.querySelector(".prelist");
+        console.log(list);
+        const listchild = document.querySelectorAll("ul > li");
+        console.log(listchild);
+
+    </script>
+
+</body>
+</html>

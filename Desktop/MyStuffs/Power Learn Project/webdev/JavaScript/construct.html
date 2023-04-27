@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating JavaScript Objects</title>
+</head>
+<body>
+
+    <p id="objCon"></p>
+    <h3 id="sch"></h3>
+    <p id="fru"></p>
+    <script>
+        const Person = {FirstName:"Topister", LastName:"Nandera", Age:89, EyeColor:"Brown"};
+        document.getElementById("objCon").innerHTML = Person.FirstName + " " + Person.LastName + " " +  "is"+ " "+ Person.Age+ " "+ "and has"+ " "+ Person.EyeColor+ " "+ "Eye Color";
+        // Creating an empty JavaScript object, with 4 properties:
+        const School = {};
+        School.Name = "ALU";
+        School.Country = "Rwanda";
+        School.Registrar = "Female";
+        School.Program = "Computer Science";
+
+        document.getElementById("sch").innerHTML = School.Name + " " + School.Country + " " + School.Registrar + " " + School.Program;
+
+        // Using the JavaScript new Keyword
+
+        const Fruits =  {};
+        Fruits.Fruit1 = "Mango";
+        Fruits.Fruit2 = "Orange";
+        Fruits.Fruit3 = "Apple";
+        Fruits.Fruit4 = "Ovacado";
+        
+        document.getElementById("fru").innerHTML = Fruits.Fruit1 
+
+    </script>
+    
+</body>
+</html>

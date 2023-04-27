@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'navBar.dart';
+import 'starch.dart';
+import 'proteins.dart';
+import 'diary.dart';
+import 'snacks.dart';
+import 'fruitsVeges.dart';
 
 class DietPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Special Diet"),
+        title: Text("Special Diets"),
       ),
       body: Column(
         children: [
@@ -17,7 +22,7 @@ class DietPage extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NavBar()),
+                MaterialPageRoute(builder: (context) => StarchFood()),
               );
             },
             child: Text(
@@ -46,7 +51,7 @@ class DietPage extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NavBar()),
+                MaterialPageRoute(builder: (context) => FruitsVeges()),
               );
             },
             child: Text(
@@ -71,7 +76,7 @@ class DietPage extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NavBar()),
+                MaterialPageRoute(builder: (context) => ProteinsFood()),
               );
             },
             child: Text(
@@ -98,7 +103,7 @@ class DietPage extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NavBar()),
+                MaterialPageRoute(builder: (context) => DiaryFood()),
               );
             },
             child: Text(
@@ -123,7 +128,7 @@ class DietPage extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NavBar()),
+                MaterialPageRoute(builder: (context) => SnacksFood()),
               );
             },
             child: Text(

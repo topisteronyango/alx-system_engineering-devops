@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Programming Languages</h1>
+    <button id="btn">Click Me Please</button>
+    <script>
+
+        const button = document.getElementById("btn");
+        button.addEventListener("click", () => {
+            alert("Thank you for clicking me!");
+        });
+        let LanguageList = document.createElement("ul");
+        document.body.appendChild(LanguageList);
+
+        let listItem1 = document.createElement("li");
+        listItem1.textContent = "HTML";
+        LanguageList.appendChild(listItem1);
+
+        let listItem2 = document.createElement("li");
+        listItem2.textContent = "JavaScript";
+        LanguageList.appendChild(listItem2);
+
+        let listItem3 = document.createElement("li");
+        listItem3.textContent = "CSS";
+        LanguageList.appendChild(listItem3);
+
+        console.log(LanguageList);
+        
+        var paragraphy = document.createElement("div");
+        document.body.appendChild(paragraphy);
+
+        var para1 = document.createElement("p");
+        para1.textContent = "This is my first paragraph";
+        paragraphy.appendChild(para1);
+
+        var para2 = document.createElement("p");
+        para2.textContent = "This is my second paragraph";
+        paragraphy.appendChild(para2);
+
+        var para3 = document.createElement("h2");
+        para3.textContent = "This is my first h2 inside the first div";
+        paragraphy.appendChild(para3);
+        para3.style.color = "red";
+        
+        console.log(paragraphy);
+    </script>
+</body>
+</html>

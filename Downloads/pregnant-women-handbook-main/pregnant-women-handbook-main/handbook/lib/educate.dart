@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'navBar.dart';
+import 'manage_emotional_imbalances.dart';
+import 'healthyFood.dart';
+import 'package:handbook/generalSelfCare.dart';
 
 class EducateMePage extends StatelessWidget {
   @override
@@ -25,7 +28,7 @@ class EducateMePage extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NavBar()),
+                MaterialPageRoute(builder: (context) => manageEmotionalImbalances()),
               );
             },
             child: Text(
@@ -54,7 +57,7 @@ class EducateMePage extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NavBar()),
+                MaterialPageRoute(builder: (context) => HealthFood()),
               );
             },
             child: Text(
@@ -79,7 +82,7 @@ class EducateMePage extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => NavBar()),
+                MaterialPageRoute(builder: (context) => GeneralSelfCare()),
               );
             },
             child: Text(
